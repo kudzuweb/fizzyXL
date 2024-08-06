@@ -26,6 +26,7 @@
   color: var(--splat-color, currentColor);
   container-type: inline-size;
   display: grid;
+  max-inline-size: 100%;
   place-items: center;
   position: relative;
   transition: all 0.2s ease;
@@ -56,7 +57,7 @@
   }
 
   .splat__perma & {
-    --splat-size: 50cqi !important;
+    --splat-size: 66vh !important;
   }
 }
 
