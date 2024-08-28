@@ -38,6 +38,6 @@ class SplatsController < ApplicationController
     end
 
     def splat_params
-      params.require(:splat).permit(:title, :body, :color, category_ids: [])
+      params.require(:splat).permit(:title, :body, :color, :image, category_ids: [])
     end
 end

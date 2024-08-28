@@ -4,6 +4,8 @@ class Splat < ApplicationRecord
   has_many :categories, through: :categorizations, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  has_one_attached :image, dependent: :purge_later
+
   belongs_to :creator, class_name: "User", default: -> { Current.user }
 
   enum :color, %w[

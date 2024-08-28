@@ -26,10 +26,20 @@
       <% end %>
 
       <label class="btn txt-medium" >
-          <%= image_tag "add.svg", aria: { hidden: "true" }, size: 24 %>
-          <span class="for-screen-reader">Add a category</span>
+        <%= image_tag "add.svg", aria: { hidden: "true" }, size: 24 %>
+        <span class="for-screen-reader">Add a category</span>
       </label>
     </div>
+  </fieldset>
+
+  <fieldset class="flex flex-column unpad margin-block-end borderless justify-space-between">
+    <legend class="for-screen-reader">Attachment</legend>
+    <label class="input input--file input--picture unpad" data-controller="upload-preview">
+      <%= image_tag splat.image.attached? ? splat.image : "default-picture.webp", alt: "Picture",
+          data: { upload_preview_target: "image" } %>
+      <%= form.file_field :image, class: "input", accept: "image/png, image/jpeg, image/jpg, image/webp",
+          data: { upload_preview_target: "input", action: "upload-preview#previewImage" } %>
+    </label>
   </fieldset>
 
   <%= form.label :body, class: "flex flex-column justify-start align-start" do %>
