@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   normalizes :email_address, with: ->(value) { value.strip.downcase }
 
+  scope :active, -> { where(active: true) }
+
   def initials
     name.scan(/\b\w/).join
   end

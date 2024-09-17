@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :session
 
   resources :projects do
-    resources :users, controller: "projects/users"
+    resource :access, controller: "projects/accesses"
   end
 
   resources :bubbles do

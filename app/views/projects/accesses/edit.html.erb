@@ -1,0 +1,14 @@
+<h1>Users on <%= @project.name %></h1>
+
+<%= form_with url: project_access_path, method: :put do |form| %>
+  <ul>
+    <% Current.account.users.active.each do |user| %>
+      <li>
+        <%= check_box_tag "user_ids[]", user.id, @project.users.include?(user), id: nil, disabled: user == Current.user %>
+        <%= user.name %>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= form.submit %>
+<% end %>
