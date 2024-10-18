@@ -8,7 +8,7 @@
   <%= tag_filters ? "Tagged" : "with" %>
   <%= render "bubbles/filters/tags", bucket: bucket, tag_filters: tag_filters %>
 
-  <% unless querying_unassigned_status? %>
+  <% unless unassigned_filter_activated? %>
     and <%= render "bubbles/filters/assignees", bucket: bucket, assignee_filters: assignee_filters %>
   <% end %>
 </h2>

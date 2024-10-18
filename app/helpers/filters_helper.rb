@@ -28,7 +28,7 @@ module FiltersHelper
     bubble_filter_params.merge params.permit :term, :view_id
   end
 
-  def querying_unassigned_status?
+  def unassigned_filter_activated?
     params[:status] == "unassigned"
   end
 end

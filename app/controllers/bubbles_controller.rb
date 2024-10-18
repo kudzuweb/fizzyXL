@@ -44,7 +44,7 @@ class BubblesController < ApplicationController
     end
 
     def clear_assignees_if_unassigned
-      params[:assignee_ids] = nil if helpers.querying_unassigned_status?
+      params[:assignee_ids] = nil if helpers.unassigned_filter_activated?
     end
 
     def set_view
