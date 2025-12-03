@@ -10,6 +10,7 @@ logo:
   status: published
   last_active_at: <%= 1.week.ago %>
   account: 37s_uuid
+  size: l
 
 layout:
   id: <%= ActiveRecord::FixtureSet.identify("layout", :uuid) %>
@@ -22,6 +23,7 @@ layout:
   status: published
   last_active_at: <%= 1.week.ago %>
   account: 37s_uuid
+  size: m
 
 text:
   id: <%= ActiveRecord::FixtureSet.identify("text", :uuid) %>
@@ -34,6 +36,7 @@ text:
   status: published
   last_active_at: <%= 1.week.ago %>
   account: 37s_uuid
+  size: xs
 
 shipping:
   id: <%= ActiveRecord::FixtureSet.identify("shipping", :uuid) %>
