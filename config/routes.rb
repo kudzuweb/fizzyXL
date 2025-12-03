@@ -80,9 +80,9 @@ Rails.application.routes.draw do
       resource :pin
       resource :publish
       resource :reading
+      resource :size
       resource :triage
       resource :watch
-      resource :reading
 
       resources :assignments
       resources :steps
