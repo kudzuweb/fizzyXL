@@ -10,13 +10,32 @@ export default class extends Controller {
 
   toggle(event) {
     // Toggle dialog open/close on 'z' keypress
+    // Skip if user is typing in an input, textarea, or editor
+    if (this.shouldIgnore(event)) return
+
     event.preventDefault()
 
     if (this.dialogTarget.hasAttribute("open")) {
       this.dialogTarget.close()
     } else {
       this.dialogTarget.show()
+      // Initialize currentHighlight to the already selected option
+      this.initializeHighlight()
     }
+  }
+
+  initializeHighlight() {
+    // Find the option that's already highlighted (current size)
+    const highlighted = this.optionTargets.find(opt =>
+      opt.classList.contains("btn--reversed")
+    )
+    if (highlighted) {
+      this.currentHighlight = highlighted
+    }
+  }
+
+  shouldIgnore(event) {
+    return event.defaultPrevented || event.target.closest("input, textarea, lexxy-editor")
   }
 
   handleKeydown(event) {
