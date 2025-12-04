@@ -22,4 +22,12 @@ module Card::Sizeable
   def display_size
     sized? ? size.upcase : "Unsized"
   end
+
+  def set_size(new_size)
+    update!(size: new_size)
+  end
+
+  def unset_size
+    update!(size: nil)
+  end
 end

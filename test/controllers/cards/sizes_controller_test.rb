@@ -5,16 +5,16 @@ class Cards::SizesControllerTest < ActionDispatch::IntegrationTest
     sign_in_as :kevin
   end
 
-  test "update" do
+  test "create" do
     assert_changes -> { cards(:shipping).reload.size }, from: nil, to: "xl" do
-      patch card_size_path(cards(:shipping)), params: { size: "xl" }, as: :turbo_stream
+      post card_size_path(cards(:shipping)), params: { size: "xl" }, as: :turbo_stream
       assert_card_container_rerendered(cards(:shipping))
     end
   end
 
-  test "update to different size" do
+  test "create to different size" do
     assert_changes -> { cards(:logo).reload.size }, from: "l", to: "s" do
-      patch card_size_path(cards(:logo)), params: { size: "s" }, as: :turbo_stream
+      post card_size_path(cards(:logo)), params: { size: "s" }, as: :turbo_stream
       assert_card_container_rerendered(cards(:logo))
     end
   end

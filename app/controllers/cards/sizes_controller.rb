@@ -1,13 +1,13 @@
 class Cards::SizesController < ApplicationController
   include CardScoped
 
-  def update
-    @card.update!(size: params[:size])
+  def create
+    @card.set_size(params[:size])
     render_card_replacement
   end
 
   def destroy
-    @card.update!(size: nil)
+    @card.unset_size
     render_card_replacement
   end
 end
