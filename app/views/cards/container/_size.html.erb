@@ -1,34 +1,27 @@
-<div class="position-relative" data-controller="dialog"
-     data-action="keydown.esc->dialog#close click@document->dialog#closeOnClickOutside">
+<div class="position-relative" data-controller="dialog size-picker"
+     data-action="keydown->size-picker#handleKeydown keydown.z@document->size-picker#toggle click@document->dialog#closeOnClickOutside">
   <button class="btn" style="--btn-background: var(--card-bg-color);"
-      data-controller="tooltip hotkey"
-      data-action="click->dialog#open:stop keydown.z@document->hotkey#click">
-    <%= icon_tag "maximize" %>
-    <span class="for-screen-reader">Change card size (z)</span>
+      data-controller="tooltip"
+      data-action="click->dialog#toggle:stop">
+    <%= icon_tag "ruler" %>
+    <span class="for-screen-reader">Change ticket size (z)</span>
   </button>
 
-  <dialog class="popup panel flex-column align-start gap-half fill-white shadow txt-small"
+  <dialog class="popup panel size-picker flex-column align-start gap-quarter fill-white shadow txt-small"
       data-dialog-target="dialog"
+      data-size-picker-target="dialog"
       data-action="turbo:submit-end->dialog#close">
-    <div class="flex-column gap-half full-width">
-      <h3 class="txt-small txt-bold margin-block-end-half">Ticket Size</h3>
-
-      <div class="flex-column gap-quarter">
-        <% Card::Sizeable::SIZES.reverse.each do |size| %>
-          <%= button_to card_size_path(card), method: :patch, params: { size: size },
-              class: "btn btn--plain justify-start #{card.size == size ? 'btn--reversed' : ''}",
-              data: { turbo_frame: dom_id(card, :card_container) } do %>
-            <span class="txt-uppercase txt-bold"><%= size %></span>
-          <% end %>
+    <div class="flex-column gap-quarter full-width">
+      <% Card::Sizeable::SIZES.each do |size| %>
+        <%= button_to card_size_path(card), method: :patch, params: { size: size },
+            class: "btn btn--plain txt-center #{card.size == size ? 'btn--reversed' : ''}",
+            data: {
+              turbo_frame: dom_id(card, :card_container),
+              size_picker_target: "option",
+              size_value: size
+            } do %>
+          <span class="txt-uppercase"><%= size %></span>
         <% end %>
-      </div>
-
-      <hr class="full-width">
-
-      <%= button_to card_size_path(card), method: :delete,
-          class: "btn btn--plain justify-start txt-muted",
-          data: { turbo_frame: dom_id(card, :card_container) } do %>
-        <span>Clear size</span>
       <% end %>
     </div>
   </dialog>
