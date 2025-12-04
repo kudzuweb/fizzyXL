@@ -155,7 +155,7 @@
   /* The wrapper around the cards used to clip overflow while transitioning.
    * Also, don't resize cards while transitioning to avoid reflow. */
   .cards__list {
-    align-items: flex-end; /* use flex-start to wipe from left */
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
     gap: var(--cards-gap);
