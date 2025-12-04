@@ -60,7 +60,6 @@ class Card::SizeableTest < ActiveSupport::TestCase
   end
 
   test "scopes work correctly" do
-    # logo has size 'l', layout has 'm', text has 'xs', shipping has nil
     assert_includes Card.sized, cards(:logo)
     assert_includes Card.sized, cards(:layout)
     assert_includes Card.sized, cards(:text)
