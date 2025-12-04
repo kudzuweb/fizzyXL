@@ -6,6 +6,10 @@ export default class extends Controller {
   connect() {
     this.buffer = ""
     this.bufferTimeout = null
+    // Store reference to the originally selected option for restoration
+    this.originalHighlight = this.optionTargets.find(opt =>
+      opt.classList.contains("btn--reversed")
+    )
   }
 
   toggle(event) {
@@ -34,6 +38,17 @@ export default class extends Controller {
     )
     if (highlighted) {
       this.currentHighlight = highlighted
+    }
+  }
+
+  resetHighlight() {
+    // Restore highlight to the originally selected option
+    // This runs when dialog closes without a selection being made
+    this.optionTargets.forEach(opt => {
+      opt.classList.remove("btn--reversed")
+    })
+    if (this.originalHighlight) {
+      this.originalHighlight.classList.add("btn--reversed")
     }
   }
 

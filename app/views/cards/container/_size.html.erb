@@ -10,7 +10,7 @@
   <dialog class="popup panel size-picker flex-column align-start gap-quarter fill-white shadow txt-small"
       data-dialog-target="dialog"
       data-size-picker-target="dialog"
-      data-action="turbo:submit-end->dialog#close">
+      data-action="turbo:submit-end->dialog#close close->size-picker#resetHighlight">
     <div class="flex-column gap-quarter full-width">
       <% Card::Sizeable::SIZES.each do |size| %>
         <%= button_to card_size_path(card), method: :patch, params: { size: size },
