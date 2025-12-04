@@ -13,7 +13,7 @@
       data-action="turbo:submit-end->dialog#close close->size-picker#resetHighlight">
     <div class="flex-column gap-quarter full-width">
       <% Card::Sizeable::SIZES.each do |size| %>
-        <%= button_to card_size_path(card), method: :patch, params: { size: size },
+        <%= button_to card_size_path(card), params: { size: size },
             class: "btn btn--plain txt-center #{card.size == size ? 'btn--reversed' : ''}",
             data: {
               turbo_frame: dom_id(card, :card_container),
