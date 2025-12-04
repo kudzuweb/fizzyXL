@@ -1,0 +1,84 @@
+@layer components {
+  /* Card Size Scaling
+  /* ------------------------------------------------------------------------ */
+  /* Scale card WIDTH only - based on actual content requirements (~270px min)
+  /* Larger cards take more horizontal space, smaller cards leave white space */
+
+  .cards .card--size-xl {
+    max-inline-size: 100%; /* Full card width (~418px) */
+  }
+
+  .cards .card--size-l {
+    max-inline-size: 90%;
+    min-inline-size: 270px;
+  }
+
+  .cards .card--size-m {
+    max-inline-size: 80%;
+    min-inline-size: 270px;
+  }
+
+  .cards .card--size-s {
+    max-inline-size: 70%;
+    min-inline-size: 270px;
+  }
+
+  .cards .card--size-xs {
+    max-inline-size: 60%;
+    min-inline-size: 270px;
+  }
+
+  /* Unsized Indicator
+  /* ------------------------------------------------------------------------ */
+  /* Subtle dashed outline to encourage sizing */
+
+  .cards .card--size-xs {
+    outline: 1px dashed color-mix(in srgb, var(--card-color, var(--color-ink)) 20%, transparent);
+    outline-offset: -1px;
+  }
+
+  /* Detail View (Perma)
+  /* ------------------------------------------------------------------------ */
+  /* Full width in detail view - size only affects card list */
+
+  .card-perma .card {
+    max-inline-size: 100%;
+  }
+
+  /* Size Picker Dialog
+  /* ------------------------------------------------------------------------ */
+  /* Ensure dialog appears above card content by elevating the actions container
+  /* Matches the existing tooltip pattern in card-perma.css */
+
+  .card-perma__actions:has(dialog[open]) {
+    z-index: var(--z-tooltip);
+  }
+
+  /* Size Picker - Vertical Column Layout
+  /* ------------------------------------------------------------------------ */
+  /* Compact vertical column dropdown positioned below button */
+
+  .popup.size-picker {
+    --panel-size: auto;
+    --panel-border-radius: 0.75em;
+
+    /* Position below button, aligned to left edge */
+    inset: 100% auto auto 0 !important;
+    transform: translateY(0.5em) !important;
+
+    /* Narrow column sizing */
+    min-inline-size: 120px !important;
+    max-inline-size: 160px !important;
+    padding: var(--block-space-half);
+
+    /* Override centering from base popup */
+    margin: 0;
+  }
+
+  .popup.size-picker .btn {
+    padding-block: var(--block-space-half);
+    justify-content: center;
+    inline-size: 100%;
+    display: flex;
+  }
+}

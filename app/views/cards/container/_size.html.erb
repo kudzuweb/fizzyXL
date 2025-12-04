@@ -1,0 +1,28 @@
+<div class="position-relative" data-controller="dialog size-picker"
+     data-action="keydown->size-picker#handleKeydown keydown.z@document->size-picker#toggle click@document->dialog#closeOnClickOutside">
+  <button class="btn" style="--btn-background: var(--card-bg-color);"
+      data-controller="tooltip"
+      data-action="click->dialog#toggle:stop">
+    <%= icon_tag "ruler" %>
+    <span class="for-screen-reader">Change ticket size (z)</span>
+  </button>
+
+  <dialog class="popup panel size-picker flex-column align-start gap-quarter fill-white shadow txt-small"
+      data-dialog-target="dialog"
+      data-size-picker-target="dialog"
+      data-action="turbo:submit-end->dialog#close close->size-picker#resetHighlight">
+    <div class="flex-column gap-quarter full-width">
+      <% Card::Sizeable::SIZES.each do |size| %>
+        <%= button_to card_size_path(card), params: { size: size },
+            class: "btn btn--plain txt-center #{card.size == size ? 'btn--reversed' : ''}",
+            data: {
+              turbo_frame: dom_id(card, :card_container),
+              size_picker_target: "option",
+              size_value: size
+            } do %>
+          <span class="txt-uppercase"><%= size %></span>
+        <% end %>
+      <% end %>
+    </div>
+  </dialog>
+</div>

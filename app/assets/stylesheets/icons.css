@@ -92,6 +92,7 @@
   .icon--refresh--meta { --svg: url("refresh--meta.svg "); }
   .icon--remove { --svg: url("remove.svg "); }
   .icon--rename { --svg: url("rename.svg "); }
+  .icon--ruler { --svg: url("ruler.svg "); }
   .icon--search { --svg: url("search.svg "); }
   .icon--settings { --svg: url("settings.svg "); }
   .icon--share { --svg: url("share.svg "); }
