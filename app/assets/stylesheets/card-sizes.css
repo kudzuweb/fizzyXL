@@ -47,9 +47,10 @@
 
   /* Size Picker Dialog
   /* ------------------------------------------------------------------------ */
-  /* Ensure dialog appears above card content */
+  /* Ensure dialog appears above card content by elevating the actions container
+  /* Matches the existing tooltip pattern in card-perma.css */
 
-  .card-perma__actions dialog {
-    z-index: 10;
+  .card-perma__actions:has(dialog[open]) {
+    z-index: var(--z-tooltip);
   }
 }
