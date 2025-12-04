@@ -33,12 +33,10 @@ export default class extends Controller {
 
   initializeHighlight() {
     // Find the option that's already highlighted (current size)
-    const highlighted = this.optionTargets.find(opt =>
+    // Always assign to keep visual and internal state synchronized
+    this.currentHighlight = this.optionTargets.find(opt =>
       opt.classList.contains("btn--reversed")
     )
-    if (highlighted) {
-      this.currentHighlight = highlighted
-    }
   }
 
   resetHighlight() {
