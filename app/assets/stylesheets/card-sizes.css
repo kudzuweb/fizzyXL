@@ -44,4 +44,12 @@
   .card-perma .card {
     max-inline-size: 100%;
   }
+
+  /* Size Picker Dialog
+  /* ------------------------------------------------------------------------ */
+  /* Ensure dialog appears above card content */
+
+  .card-perma__actions dialog {
+    z-index: 10;
+  }
 }
