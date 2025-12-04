@@ -15,10 +15,13 @@ export default class extends Controller {
 
     event.preventDefault()
 
+    // Delegate to dialog controller for proper state management
+    const dialogController = this.application.getControllerForElementAndIdentifier(this.element, "dialog")
+
     if (this.dialogTarget.hasAttribute("open")) {
-      this.dialogTarget.close()
+      dialogController.close()
     } else {
-      this.dialogTarget.show()
+      dialogController.open()
       // Initialize currentHighlight to the already selected option
       this.initializeHighlight()
     }
@@ -59,8 +62,10 @@ export default class extends Controller {
       return
     }
 
+    // Skip 'z' - let toggle action handle it for closing the dialog
+    if (event.key.toLowerCase() === "z") return
+
     // Handle character input for size selection
-    // Note: 'z' is fine here since no size starts with 'z' - toggle handles it separately
     if (event.key.length === 1 && event.key.match(/[a-z]/i)) {
       event.preventDefault()
       this.addToBuffer(event.key.toLowerCase())
