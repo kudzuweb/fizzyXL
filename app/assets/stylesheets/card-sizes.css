@@ -1,4 +1,61 @@
 @layer components {
+  /* Stacked Depth Strategy - Paper Stack Effect
+  /* ------------------------------------------------------------------------ */
+  /* Creates visual "mass" through layered shadows
+  /* More layers = larger size */
+
+  .card.card--size-xs {
+    /* No stacking - flat appearance */
+  }
+
+  .card.card--size-s {
+    box-shadow:
+      var(--shadow),
+      2px 2px 0 0 var(--card-bg-color),
+      2px 2px 0 1px color-mix(in srgb, var(--card-color) 33%, var(--color-ink-inverted));
+    transform: translate(-1px, -1px);
+    margin-bottom: 2px;
+  }
+
+  .card.card--size-m {
+    box-shadow:
+      var(--shadow),
+      2px 2px 0 0 var(--card-bg-color),
+      2px 2px 0 1px color-mix(in srgb, var(--card-color) 33%, var(--color-ink-inverted)),
+      4px 4px 0 0 var(--card-bg-color),
+      4px 4px 0 1px color-mix(in srgb, var(--card-color) 33%, var(--color-ink-inverted));
+    transform: translate(-2px, -2px);
+    margin-bottom: 4px;
+  }
+
+  .card.card--size-l {
+    box-shadow:
+      var(--shadow),
+      2px 2px 0 0 var(--card-bg-color),
+      2px 2px 0 1px color-mix(in srgb, var(--card-color) 33%, var(--color-ink-inverted)),
+      4px 4px 0 0 var(--card-bg-color),
+      4px 4px 0 1px color-mix(in srgb, var(--card-color) 33%, var(--color-ink-inverted)),
+      6px 6px 0 0 var(--card-bg-color),
+      6px 6px 0 1px color-mix(in srgb, var(--card-color) 33%, var(--color-ink-inverted));
+    transform: translate(-3px, -3px);
+    margin-bottom: 6px;
+  }
+
+  .card.card--size-xl {
+    box-shadow:
+      var(--shadow),
+      2px 2px 0 0 var(--card-bg-color),
+      2px 2px 0 1px color-mix(in srgb, var(--card-color) 33%, var(--color-ink-inverted)),
+      4px 4px 0 0 var(--card-bg-color),
+      4px 4px 0 1px color-mix(in srgb, var(--card-color) 33%, var(--color-ink-inverted)),
+      6px 6px 0 0 var(--card-bg-color),
+      6px 6px 0 1px color-mix(in srgb, var(--card-color) 33%, var(--color-ink-inverted)),
+      8px 8px 0 0 var(--card-bg-color),
+      8px 8px 0 1px color-mix(in srgb, var(--card-color) 33%, var(--color-ink-inverted));
+    transform: translate(-4px, -4px);
+    margin-bottom: 8px;
+  }
+
   /* Size Picker Dialog
   /* ------------------------------------------------------------------------ */
   /* Ensure dialog appears above card content by elevating the actions container
