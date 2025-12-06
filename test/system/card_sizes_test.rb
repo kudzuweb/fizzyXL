@@ -1,7 +1,9 @@
 require "application_system_test_case"
 
 class CardSizesTest < ApplicationSystemTestCase
-  test "sized cards have correct size class in board view" do
+  # TODO: Add system tests for new t-shirt size visualization once implemented
+
+  test "cards have size class applied" do
     sign_in_as(users(:david))
 
     visit board_url(boards(:writebook))
@@ -11,7 +13,7 @@ class CardSizesTest < ApplicationSystemTestCase
     assert_selector "#article_card_#{cards(:text).id}.card--size-xs", visible: false
   end
 
-  test "unsized cards have default xs size class in board view" do
+  test "unsized cards have default xs size class" do
     sign_in_as(users(:david))
 
     visit board_url(boards(:writebook))

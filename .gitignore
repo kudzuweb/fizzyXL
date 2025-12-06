@@ -45,4 +45,7 @@
 # Ignore personal notes
 BREAKDOWN.md
 eventtrackingprosandcons.md
-contributionsummary.md
+
+# DEV ONLY: Temporary theme toggle (delete before production merge)
+app/assets/stylesheets/dev-theme-override.css
+app/javascript/controllers/dev_theme_toggle_controller.js
