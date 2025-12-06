@@ -1,4 +1,76 @@
 @layer components {
+  /* Cornerstone Strategy - Triangle Badge
+  /* ------------------------------------------------------------------------ */
+  /* Triangle size and shade indicate t-shirt size level */
+
+  .card.card--size-xs::after,
+  .card.card--size-s::after,
+  .card.card--size-m::after,
+  .card.card--size-l::after,
+  .card.card--size-xl::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    z-index: 2; /* Above card content */
+  }
+
+  /* XS - 10px triangle, lightest shade */
+  .card.card--size-xs::after {
+    border-width: 0 10px 10px 0;
+    border-color: transparent oklch(var(--lch-ink-lighter)) transparent transparent;
+  }
+
+  /* S - 16px triangle, light shade */
+  .card.card--size-s::after {
+    border-width: 0 16px 16px 0;
+    border-color: transparent oklch(var(--lch-ink-light)) transparent transparent;
+  }
+
+  /* M - 24px triangle, medium shade */
+  .card.card--size-m::after {
+    border-width: 0 24px 24px 0;
+    border-color: transparent oklch(var(--lch-ink-medium)) transparent transparent;
+  }
+
+  /* L - 32px triangle, dark shade */
+  .card.card--size-l::after {
+    border-width: 0 32px 32px 0;
+    border-color: transparent oklch(var(--lch-ink-dark)) transparent transparent;
+  }
+
+  /* XL - 42px triangle, darkest shade */
+  .card.card--size-xl::after {
+    border-width: 0 42px 42px 0;
+    border-color: transparent oklch(var(--lch-ink-darker)) transparent transparent;
+  }
+
+  /* Dark mode - use inverse ink scale */
+  @media (prefers-color-scheme: dark) {
+    .card.card--size-xs::after {
+      border-color: transparent oklch(var(--lch-ink-lightest)) transparent transparent;
+    }
+
+    .card.card--size-s::after {
+      border-color: transparent oklch(var(--lch-ink-lighter)) transparent transparent;
+    }
+
+    .card.card--size-m::after {
+      border-color: transparent oklch(var(--lch-ink-medium)) transparent transparent;
+    }
+
+    .card.card--size-l::after {
+      border-color: transparent oklch(var(--lch-ink-light)) transparent transparent;
+    }
+
+    .card.card--size-xl::after {
+      border-color: transparent oklch(var(--lch-ink-dark)) transparent transparent;
+    }
+  }
+
   /* Size Picker Dialog
   /* ------------------------------------------------------------------------ */
   /* Ensure dialog appears above card content by elevating the actions container
