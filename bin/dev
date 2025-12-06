@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 bin/rails runner - <<EOF
-  puts "Login with david@example.com to: http://fizzy.localhost:3006/"
+  puts "Login with david@example.com to: http://fizzy.localhost:3008/"
 EOF
 
 if [ -f tmp/solid-queue.txt ]; then
@@ -12,4 +12,4 @@ if [ -f tmp/oss-config.txt ]; then
   export OSS_CONFIG=1
 fi
 
-exec ./bin/rails server -p 3006
+exec ./bin/rails server -p 3008
