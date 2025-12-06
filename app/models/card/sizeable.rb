@@ -23,6 +23,17 @@ module Card::Sizeable
     sized? ? size.upcase : "Unsized"
   end
 
+  def size_level
+    case size
+    when "xs" then 1
+    when "s" then 2
+    when "m" then 3
+    when "l" then 4
+    when "xl" then 5
+    else 1
+    end
+  end
+
   def set_size(new_size)
     update!(size: new_size)
   end

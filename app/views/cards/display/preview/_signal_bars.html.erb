@@ -1,0 +1,9 @@
+<div class="card__signal-bars"
+     data-size="<%= card.size || 'xs' %>"
+     aria-label="Size: <%= card.display_size %>">
+  <div class="signal-bar signal-bar--1" data-active="<%= card.size_level >= 1 %>"></div>
+  <div class="signal-bar signal-bar--2" data-active="<%= card.size_level >= 2 %>"></div>
+  <div class="signal-bar signal-bar--3" data-active="<%= card.size_level >= 3 %>"></div>
+  <div class="signal-bar signal-bar--4" data-active="<%= card.size_level >= 4 %>"></div>
+  <div class="signal-bar signal-bar--5" data-active="<%= card.size_level >= 5 %>"></div>
+</div>

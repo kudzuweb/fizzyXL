@@ -1,4 +1,53 @@
 @layer components {
+  /* Signal Bars Strategy - Capacity Indicator
+  /* ------------------------------------------------------------------------ */
+  /* 5 vertical bars like cell signal strength, filled based on size level */
+
+  .card__signal-bars {
+    position: absolute;
+    bottom: var(--card-padding-block);
+    right: var(--card-padding-inline);
+    display: flex;
+    align-items: flex-end;
+    gap: 2px;
+    height: 14px; /* 3.5 * 4px base unit */
+    z-index: 1;
+  }
+
+  .signal-bar {
+    width: 3px;
+    border-radius: 1px;
+    transition: background-color 200ms ease-out;
+  }
+
+  /* Bar heights - each 20% taller than previous */
+  .signal-bar--1 { height: 20%; }
+  .signal-bar--2 { height: 40%; }
+  .signal-bar--3 { height: 60%; }
+  .signal-bar--4 { height: 80%; }
+  .signal-bar--5 { height: 100%; }
+
+  /* Active bars - use card color mixed with ink */
+  .signal-bar[data-active="true"] {
+    background-color: color-mix(in srgb, var(--card-color) 60%, var(--color-ink));
+  }
+
+  /* Inactive bars - subtle background */
+  .signal-bar[data-active="false"] {
+    background-color: color-mix(in srgb, var(--card-color) 10%, var(--color-ink-lighter));
+  }
+
+  /* Dark mode - adjust inactive bar visibility */
+  @media (prefers-color-scheme: dark) {
+    .signal-bar[data-active="true"] {
+      background-color: color-mix(in srgb, var(--card-color) 70%, var(--color-ink-inverted));
+    }
+
+    .signal-bar[data-active="false"] {
+      background-color: color-mix(in srgb, var(--color-ink-lighter) 50%, transparent);
+    }
+  }
+
   /* Size Picker Dialog
   /* ------------------------------------------------------------------------ */
   /* Ensure dialog appears above card content by elevating the actions container
