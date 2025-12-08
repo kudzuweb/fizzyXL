@@ -15,34 +15,29 @@
     width: 0;
     height: 0;
     border-style: solid;
-    z-index: 2; /* Above card content */
+    z-index: 2;
   }
 
-  /* XS - 10px triangle, lightest shade */
   .card.card--size-xs::after {
     border-width: 0 10px 10px 0;
     border-color: transparent oklch(var(--lch-ink-lighter)) transparent transparent;
   }
 
-  /* S - 16px triangle, light shade */
   .card.card--size-s::after {
     border-width: 0 16px 16px 0;
     border-color: transparent oklch(var(--lch-ink-light)) transparent transparent;
   }
 
-  /* M - 24px triangle, medium shade */
   .card.card--size-m::after {
     border-width: 0 24px 24px 0;
     border-color: transparent oklch(var(--lch-ink-medium)) transparent transparent;
   }
 
-  /* L - 32px triangle, dark shade */
   .card.card--size-l::after {
     border-width: 0 32px 32px 0;
     border-color: transparent oklch(var(--lch-ink-dark)) transparent transparent;
   }
 
-  /* XL - 42px triangle, darkest shade */
   .card.card--size-xl::after {
     border-width: 0 42px 42px 0;
     border-color: transparent oklch(var(--lch-ink-darker)) transparent transparent;
@@ -87,17 +82,11 @@
   .popup.size-picker {
     --panel-size: auto;
     --panel-border-radius: 0.75em;
-
-    /* Position below button, aligned to left edge */
     inset: 100% auto auto 0 !important;
     transform: translateY(0.5em) !important;
-
-    /* Narrow column sizing */
     min-inline-size: 120px !important;
     max-inline-size: 160px !important;
     padding: var(--block-space-half);
-
-    /* Override centering from base popup */
     margin: 0;
   }
 
