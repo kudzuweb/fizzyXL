@@ -11,6 +11,8 @@ export default class extends Controller {
     )
   }
 
+  // Actions
+
   toggle(event) {
     if (this.shouldIgnore(event)) return
 
@@ -24,26 +26,6 @@ export default class extends Controller {
       dialogController.open()
       this.initializeHighlight()
     }
-  }
-
-  initializeHighlight() {
-    // Always assign to keep visual and internal state synchronized
-    this.currentHighlight = this.optionTargets.find(opt =>
-      opt.classList.contains("btn--reversed")
-    )
-  }
-
-  resetHighlight() {
-    this.optionTargets.forEach(opt => {
-      opt.classList.remove("btn--reversed")
-    })
-    if (this.originalHighlight) {
-      this.originalHighlight.classList.add("btn--reversed")
-    }
-  }
-
-  shouldIgnore(event) {
-    return event.defaultPrevented || event.target.closest("input, textarea, lexxy-editor")
   }
 
   handleKeydown(event) {
@@ -70,6 +52,27 @@ export default class extends Controller {
       event.preventDefault()
       this.addToBuffer(event.key.toLowerCase())
     }
+  }
+
+  // Private
+
+  initializeHighlight() {
+    this.currentHighlight = this.optionTargets.find(opt =>
+      opt.classList.contains("btn--reversed")
+    )
+  }
+
+  resetHighlight() {
+    this.optionTargets.forEach(opt => {
+      opt.classList.remove("btn--reversed")
+    })
+    if (this.originalHighlight) {
+      this.originalHighlight.classList.add("btn--reversed")
+    }
+  }
+
+  shouldIgnore(event) {
+    return event.defaultPrevented || event.target.closest("input, textarea, lexxy-editor")
   }
 
   navigateOptions(direction) {

@@ -1,8 +1,6 @@
 require "application_system_test_case"
 
 class CardSizesTest < ApplicationSystemTestCase
-  # TODO: Add system tests for new t-shirt size visualization once implemented
-
   test "cards have size class applied" do
     sign_in_as(users(:david))
 
